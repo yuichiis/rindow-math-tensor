@@ -1,7 +1,7 @@
 <?php
 namespace Rindow\Math\Tensor;
 
-use Rindow\OperatorOvl\Operatable;
+use Rindow\OpOverride\Operatable;
 
 class CoutAttribute
 {

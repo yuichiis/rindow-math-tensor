@@ -9,9 +9,9 @@ jobs:
   tests:
     runs-on: ${{ matrix.os }}
     env:
-        operatorovlver: 0.1.0
-        testlib: 0.0.9
-        operatorovlrep: ${{ github.repository_owner }}/rindow-operatorovl
+        opoverridever: 0.1.0
+        testlib: 0.0.10
+        opoverriderep: ${{ github.repository_owner }}/rindow-opoverride
         owner: ${{ github.repository_owner }}
 
     strategy:
@@ -42,8 +42,8 @@ jobs:
 
       - name: Install PHP Extension
         run: |
-          wget https://github.com/${{ env.operatorovlrep }}/releases/download/${{ env.testlib }}/rindow-operatorovl-php${{ matrix.php }}_${{ env.operatorovlver }}_amd64.deb
-          sudo apt install -y ./rindow-operatorovl-php${{ matrix.php }}_${{ env.operatorovlver }}_amd64.deb
+          wget https://github.com/${{ env.opoverriderep }}/releases/download/${{ env.testlib }}/rindow-opoverride-php${{ matrix.php }}_${{ env.opoverridever }}_amd64.deb
+          sudo apt install -y ./rindow-opoverride-php${{ matrix.php }}_${{ env.opoverridever }}_amd64.deb
 
       - name: Checkout codes
         uses: "actions/checkout@v4"

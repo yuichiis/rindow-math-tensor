@@ -38,7 +38,7 @@ Download pre-build binaries from [rindow-operatorovr](https://github.com/rindow/
 
 ### Install PHP the extension for Windows/macOS
 - Extract Zip file, and Copy dll/so file to PHP Extension directory.
-- Add the "extension=php_rindow_operatorovl" entry to php.ini
+- Add the "extension=php_rindow_opoverride" entry to php.ini
 
 ### Install PHP the extension for Ubuntu
 - Install deb file.

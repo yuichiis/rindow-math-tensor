@@ -3,7 +3,7 @@ namespace Rindow\Math\Tensor;
 
 use Interop\Polite\Math\Matrix\NDArray;
 use Interop\Polite\Math\Matrix\Buffer;
-use Rindow\OperatorOvl\Operatable;
+use Rindow\OpOverride\Operatable;
 use InvalidArgumentException;
 use Countable;
 use IteratorAggregate;
