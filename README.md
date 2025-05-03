@@ -17,7 +17,7 @@ Requirements
 ============
 
 - PHP 8.1 or PHP8.2 or PHP8.3 or PHP8.4
-- Rindow-Operatorovr PHP extension v0.1 or later
+- Rindow-OpOverride PHP extension v0.1 or later
 - Rindow-Math-Matrix v2.1 or later
 
 ### Strong recommend ###
@@ -34,7 +34,7 @@ Please see the [rindow-math-matrix-matlibffi](https://github.com/rindow/rindow-m
 How to Setup
 ============
 ### Download pre-build binaries
-Download pre-build binaries from [rindow-operatorovr](https://github.com/rindow/rindow-operatorovr/releases).
+Download pre-build binaries from [rindow-opoverride](https://github.com/rindow/rindow-opoverride/releases).
 
 ### Install PHP the extension for Windows/macOS
 - Extract Zip file, and Copy dll/so file to PHP Extension directory.
@@ -43,7 +43,7 @@ Download pre-build binaries from [rindow-operatorovr](https://github.com/rindow/
 ### Install PHP the extension for Ubuntu
 - Install deb file.
 ```shell
-$ sudo apt install ./rindow-operatorovr-XXX-XXX.deb
+$ sudo apt install ./rindow-opoverride-XXX-XXX.deb
 ```
 
 ### Install PHP Modules
