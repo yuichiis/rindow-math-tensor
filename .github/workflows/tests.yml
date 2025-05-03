@@ -43,7 +43,7 @@ jobs:
       - name: Install PHP Extension
         run: |
           wget https://github.com/${{ env.operatorovlrep }}/releases/download/${{ env.testlib }}/rindow-operatorovl-php${{ matrix.php }}_${{ env.operatorovlver }}_amd64.deb
-          sudo apt install -y ./rindow-operatorovl-${{ matrix.php }}_${{ env.operatorovlver }}_amd64.deb
+          sudo apt install -y ./rindow-operatorovl-php${{ matrix.php }}_${{ env.operatorovlver }}_amd64.deb
 
       - name: Checkout codes
         uses: "actions/checkout@v4"
