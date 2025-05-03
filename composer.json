@@ -1,5 +1,5 @@
 {
-    "name": "rindow/rindow-math-matrix",
+    "name": "rindow/rindow-math-tensor",
     "type": "library",
     "description": "The Operatable Tensor Object",
     "keywords": ["rindow","math","tensor","N-dimension","operation"],
