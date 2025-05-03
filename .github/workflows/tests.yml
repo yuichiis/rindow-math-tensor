@@ -10,7 +10,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     env:
         operatorovlver: 0.1.0
-        testlib: 0.0.23
+        testlib: 0.0.9
         operatorovlrep: ${{ github.repository_owner }}/rindow-operatorovl
         owner: ${{ github.repository_owner }}
 
