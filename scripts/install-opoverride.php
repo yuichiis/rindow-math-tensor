@@ -163,10 +163,13 @@ function installExtensionBinary(
         $phpVersionShort = "{$phpMajor}.{$phpMinor}"; // 例: 8.4
 
         // ファイル名の形式: rindow-opoverride-php8.4_0.1.0_amd64.deb
-        $downloadFilename = "{$pluginName}-php{$phpVersionShort}_{$pluginVersion}_{$arch}{$targetFileExt}";
+        $tmpPluginName = str_replace('_', '-', $pluginName);
+        $downloadFilename = "{$tmpPluginName}-php{$phpVersionShort}_{$pluginVersion}_{$arch}{$targetFileExt}";
         //$downloadUrl = DOWNLOAD_URL_BASE . $pluginVersion . '/' . $downloadFilename;
         $downloadUrl = DOWNLOAD_URL_BASE . '0.0.10' . '/' . $downloadFilename;
         echo "決定されたダウンロードURL: {$downloadUrl}\n";
+        https://github.com/yuichiis/rindow-opoverride/releases/download/0.0.10/rindow_opoverride-php8.4_0.1.0_amd64.deb
+        https://github.com/yuichiis/rindow-opoverride/releases/download/0.0.10/rindow-opoverride-php8.4_0.1.0_amd64.deb
 
         // 6. 一時ファイルパスを準備
         $tempDir = sys_get_temp_dir();
