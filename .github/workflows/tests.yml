@@ -15,7 +15,7 @@ jobs:
         owner: ${{ github.repository_owner }}
 
     strategy:
-        fail-fast: true
+        fail-fast: false
         matrix:
           include:
             #- name: PHP8.1
@@ -75,8 +75,8 @@ jobs:
           unzip rindow_opoverride.zip
           rm rindow_opoverride.zip
           php -r "echo ini_get('extension_dir');"
-          EXTENSION_DIR = $(php -r "echo ini_get('extension_dir');")
-          PHP_INI = $(php -r "echo php_ini_loaded_file();")
+          EXTENSION_DIR=$(php -r "echo ini_get('extension_dir');")
+          PHP_INI=$(php -r "echo php_ini_loaded_file();")
           cp rindow_opoverride/rindow_opoverride.so ${EXTENSION_DIR}
           echo "" >> ${PHP_INI}
           echo "extension=rindow_opoverride" >> ${PHP_INI}
