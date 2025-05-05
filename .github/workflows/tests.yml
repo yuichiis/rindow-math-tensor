@@ -77,8 +77,7 @@ jobs:
           php -r "echo ini_get('extension_dir');"
           EXTENSION_DIR=$(php -r "echo ini_get('extension_dir');")
           PHP_INI=$(php -r "echo php_ini_loaded_file();")
-          ls -l
-          cp rindow_opoverride/rindow_opoverride.so ${EXTENSION_DIR}
+          cp rindow_opoverride.so ${EXTENSION_DIR}
           echo "" >> ${PHP_INI}
           echo "extension=rindow_opoverride" >> ${PHP_INI}
 
