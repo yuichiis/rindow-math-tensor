@@ -22,15 +22,23 @@ jobs:
               os: ubuntu-22.04
               php: '8.1'
               phpunit: '10.5'
-            - name: PHP8.1
-              os: ubuntu-latest
-              php: '8.1'
-              phpunit: '10.5'
             - name: PHP8.4
               os: ubuntu-latest
               php: '8.4'
               phpunit: '11.5'
-  
+            - name: Windows
+              os: windows-latest
+              arch: 'x64'
+              php: '8.4'
+              phpunit: '11.5'
+              ffi: 'ffi'
+            #- name: macOS
+            #  os: macos-latest
+            #  arch: 'arm64'
+            #  php: '8.4'
+            #  phpunit: '11.5'
+            #  ffi: 'ffi'
+    
 
     steps:
       - name: Setup PHP ${{ matrix.php }}
@@ -44,10 +52,22 @@ jobs:
         env:
           fail-fast: true
 
-      - name: Install PHP Extension
+      - name: Install PHP Extension (Linux)
+        if: ${{ startsWith(matrix.os, 'ubuntu-') }}
         run: |
           wget https://github.com/${{ env.opoverriderep }}/releases/download/${{ env.testlib }}/rindow-opoverride-php${{ matrix.php }}_${{ env.opoverridever }}_amd64.deb
           sudo apt install -y ./rindow-opoverride-php${{ matrix.php }}_${{ env.opoverridever }}_amd64.deb
+
+      - name: Install PHP Extension (Windows)
+        if: ${{ startsWith(matrix.os, 'windows-') }}
+        run: |
+          https://github.com/yuichiis/rindow-opoverride/releases/download/0.0.10/rindow_opoverride-php8.4-0.1.0-win-nts-vs17-x64.zip
+          Invoke-WebRequest -Uri https://github.com/${{ env.opoverriderep }}/releases/download/${{ env.testlib }}/rindow_opoverride-php${{ matrix.php }}-${{ env.opoverridever }}-win-nts-vs17-x64.zip -OutFile rindow_opoverride.zip
+          Expand-Archive -Path rindow_opoverride.zip
+          Remove-Item rindow_opoverride.zip
+          copy rindow_opoverride.zip C:\tools\php\php\ext\.
+          echo "" >> C:\tools\php\php\php.ini
+          echo "extention=rindow_opoverride" >> C:\tools\php\php\php.ini
 
       - name: Checkout codes
         uses: "actions/checkout@v4"
