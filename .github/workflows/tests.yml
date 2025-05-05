@@ -64,9 +64,9 @@ jobs:
           Remove-Item rindow_opoverride.zip
           $extension_dir = php -r "echo ini_get('extension_dir');"
           $php_ini = php -r "echo php_ini_loaded_file();"
-          copy rindow_opoverride\php_rindow_opoverride.dll $extension_dir
-          echo "" >> $php_ini
-          echo "extension=rindow_opoverride" >> $php_ini
+          Copy-Item -Path "rindow_opoverride\php_rindow_opoverride.dll" -Destination $extension_dir
+          Add-Content -Path $php_ini -Value ""
+          Add-Content -Path $php_ini -Value "extension=rindow_opoverride"
 
       - name: Checkout codes
         uses: "actions/checkout@v4"
