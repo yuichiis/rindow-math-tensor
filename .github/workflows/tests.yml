@@ -31,7 +31,6 @@ jobs:
               arch: 'x64'
               php: '8.4'
               phpunit: '11.5'
-              ffi: 'ffi'
             #- name: macOS
             #  os: macos-latest
             #  arch: 'arm64'
@@ -61,7 +60,6 @@ jobs:
       - name: Install PHP Extension (Windows)
         if: ${{ startsWith(matrix.os, 'windows-') }}
         run: |
-          https://github.com/yuichiis/rindow-opoverride/releases/download/0.0.10/rindow_opoverride-php8.4-0.1.0-win-nts-vs17-x64.zip
           Invoke-WebRequest -Uri https://github.com/${{ env.opoverriderep }}/releases/download/${{ env.testlib }}/rindow_opoverride-php${{ matrix.php }}-${{ env.opoverridever }}-win-nts-vs17-x64.zip -OutFile rindow_opoverride.zip
           Expand-Archive -Path rindow_opoverride.zip
           Remove-Item rindow_opoverride.zip
