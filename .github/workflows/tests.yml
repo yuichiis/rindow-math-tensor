@@ -71,7 +71,7 @@ jobs:
       - name: Install PHP Extension (macOS)
         if: ${{ startsWith(matrix.os, 'macos-') }}
         run: |
-          curl https://github.com/${{ env.opoverriderep }}/releases/download/${{ env.testlib }}/rindow_opoverride-php${{ matrix.php }}-${{ env.opoverridever }}-macos-${{ matrix.arch }}.zip -OutFile rindow_opoverride.zip -O -L
+          curl https://github.com/${{ env.opoverriderep }}/releases/download/${{ env.testlib }}/rindow_opoverride-php${{ matrix.php }}-${{ env.opoverridever }}-macos-${{ matrix.arch }}.zip -o rindow_opoverride.zip -L
           unzip rindow_opoverride.zip
           rm rindow_opoverride.zip
           EXTENSION_DIR = `php -r "echo ini_get('extension_dir');"`
