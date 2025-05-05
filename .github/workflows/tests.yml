@@ -66,7 +66,7 @@ jobs:
           php -r "echo ini_get('extension_dir');"
           copy rindow_opoverride\php_rindow_opoverride.dll C:\tools\php\ext\.
           echo "" >> C:\tools\php\php.ini
-          echo "extention=rindow_opoverride" >> C:\tools\php\php.ini
+          echo "extension=rindow_opoverride" >> C:\tools\php\php.ini
 
       - name: Checkout codes
         uses: "actions/checkout@v4"
