@@ -62,11 +62,11 @@ jobs:
           Invoke-WebRequest -Uri https://github.com/${{ env.opoverriderep }}/releases/download/${{ env.testlib }}/rindow_opoverride-php${{ matrix.php }}-${{ env.opoverridever }}-win-nts-vs17-x64.zip -OutFile rindow_opoverride.zip
           Expand-Archive -Path rindow_opoverride.zip
           Remove-Item rindow_opoverride.zip
-          dir rindow_opoverride
-          php -r "echo ini_get('extension_dir');"
-          copy rindow_opoverride\php_rindow_opoverride.dll C:\tools\php\ext\.
-          echo "" >> C:\tools\php\php.ini
-          echo "extension=rindow_opoverride" >> C:\tools\php\php.ini
+          $extension_dir = php -r "echo ini_get('extension_dir');"
+          $php_ini = php -r "echo php_ini_loaded_file();"
+          copy rindow_opoverride\php_rindow_opoverride.dll $extension_dir
+          echo "" >> $php_ini
+          echo "extension=rindow_opoverride" >> $php_ini
 
       - name: Checkout codes
         uses: "actions/checkout@v4"
