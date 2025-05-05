@@ -26,16 +26,16 @@ jobs:
             #  os: ubuntu-latest
             #  php: '8.4'
             #  phpunit: '11.5'
-            - name: Windows
-              os: windows-latest
-              arch: 'x64'
-              php: '8.4'
-              phpunit: '11.5'
-            #- name: macOS
-            #  os: macos-latest
-            #  arch: 'arm64'
+            #- name: Windows
+            #  os: windows-latest
+            #  arch: 'x64'
             #  php: '8.4'
             #  phpunit: '11.5'
+            - name: macOS
+              os: macos-latest
+              arch: 'arm64'
+              php: '8.4'
+              phpunit: '11.5'
    
 
     steps:
@@ -68,12 +68,23 @@ jobs:
           Add-Content -Path $php_ini -Value ""
           Add-Content -Path $php_ini -Value "extension=rindow_opoverride"
 
+      - name: Install PHP Extension (macOS)
+        if: ${{ startsWith(matrix.os, 'macos-') }}
+        run: |
+          curl https://github.com/${{ env.opoverriderep }}/releases/download/${{ env.testlib }}/rindow_opoverride-php${{ matrix.php }}-${{ env.opoverridever }}-macos-${{ arch }}.zip -OutFile rindow_opoverride.zip -O -L
+          unzip rindow_opoverride.zip
+          rm rindow_opoverride.zip
+          EXTENSION_DIR = `php -r "echo ini_get('extension_dir');"`
+          PHP_INI = `php -r "echo php_ini_loaded_file();"`
+          sudo cp rindow_opoverride/rindow_opoverride.so ${EXTENSION_DIR}
+          echo "" >> ${PHP_INI}
+          echo "extension=rindow_opoverride" >> ${PHP_INI}
+
       - name: Checkout codes
         uses: "actions/checkout@v4"
 
       - name: Composer
         run: |
-          Select-String -Path "C:\tools\php\php.ini" -Pattern "rindow"
           composer update
           composer require --dev phpunit/phpunit=^${{ matrix.phpunit }}
 
