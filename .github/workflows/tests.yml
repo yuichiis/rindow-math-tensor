@@ -63,7 +63,9 @@ jobs:
           Invoke-WebRequest -Uri https://github.com/${{ env.opoverriderep }}/releases/download/${{ env.testlib }}/rindow_opoverride-php${{ matrix.php }}-${{ env.opoverridever }}-win-nts-vs17-x64.zip -OutFile rindow_opoverride.zip
           Expand-Archive -Path rindow_opoverride.zip
           Remove-Item rindow_opoverride.zip
-          copy php_rindow_opoverride.dll C:\tools\php\ext\.
+          dir 
+          dir rindow_opoverride
+          copy rindow_opoverride\php_rindow_opoverride.dll C:\tools\php\ext\.
           echo "" >> C:\tools\php\php.ini
           echo "extention=rindow_opoverride" >> C:\tools\php\php.ini
 
