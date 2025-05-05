@@ -74,6 +74,7 @@ jobs:
           curl https://github.com/${{ env.opoverriderep }}/releases/download/${{ env.testlib }}/rindow_opoverride-php${{ matrix.php }}-${{ env.opoverridever }}-macos-${{ matrix.arch }}.zip -o rindow_opoverride.zip -L
           unzip rindow_opoverride.zip
           rm rindow_opoverride.zip
+          php -r "echo ini_get('extension_dir');"
           EXTENSION_DIR = $(php -r "echo ini_get('extension_dir');")
           PHP_INI = $(php -r "echo php_ini_loaded_file();")
           cp rindow_opoverride/rindow_opoverride.so ${EXTENSION_DIR}
