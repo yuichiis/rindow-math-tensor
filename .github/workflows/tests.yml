@@ -73,7 +73,7 @@ jobs:
 
       - name: Composer
         run: |
-          Select-String -Path "C:\php\php.ini" -Pattern "rindow"
+          Select-String -Path "C:\tools\php\php.ini" -Pattern "rindow"
           composer update
           composer require --dev phpunit/phpunit=^${{ matrix.phpunit }}
 
